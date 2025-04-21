@@ -1,36 +1,68 @@
+
+/* Base layout */
 body {
-  font-family: sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 2rem;
-  background: #f7f7f7;
-  color: #333;
+  background-color: #f3e8ff; /* Pale lavender */
+  color: #1f2937; /* Deep charcoal */
+  line-height: 1.6;
 }
 
-header, section {
-  margin-bottom: 3rem;
+/* Headers */
+h1, h2, h3 {
+  color: #3b0764; /* Deep purple for headings */
 }
 
-h1, h2 {
-  color: #1f2937;
+/* Section layout */
+header, section, footer {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
 }
 
-.project {
-  border: 1px solid #ccc;
-  padding: 1rem;
-  background: #fff;
-  margin-bottom: 1rem;
+/* Links */
+a {
+  color: #6d28d9;
+  text-decoration: none;
 }
 
-.skills-section .badges {
+a:hover {
+  text-decoration: underline;
+}
+
+/* Badge styles */
+.badges {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
+
 .badge {
-  background-color: #4b6cb7;
-  color: white;
+  background-color: #d8b4fe;
+  color: #3b0764;
   padding: 10px 15px;
   border-radius: 999px;
   font-size: 14px;
   font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
+/* Resume and external link buttons */
+.resume-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #7c3aed;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.resume-btn:hover {
+  background-color: #5b21b6;
+  cursor: pointer;
+}
