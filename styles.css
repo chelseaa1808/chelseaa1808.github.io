@@ -19,3 +19,18 @@ h1, h2 {
   background: #fff;
   margin-bottom: 1rem;
 }
+
+.skills-section .badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.badge {
+  background-color: #4b6cb7;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
