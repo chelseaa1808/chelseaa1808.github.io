@@ -106,3 +106,13 @@ a:hover {
 .final-project {
   background-color: #f8fafc;
 }
+
+.link-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.link-group .resume-btn {
+  margin-top: 0;
+}
