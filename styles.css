@@ -16,6 +16,11 @@ h1, h2, h3 {
   margin-top: 0;
 }
 
+h4 {
+  color: #1e3a8a;
+  margin: 1rem 0 0.4rem;
+}
+
 /* Section layout */
 header, section, footer {
   background-color: #ffffff;
