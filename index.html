@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chelsea Anestal | MBA Student Portfolio</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -9,6 +10,13 @@
   <header>
     <h1>Chelsea Anestal</h1>
     <p class="header-subtitle">Solution Consultant at Oracle | MS/MBA Student | Solution Architecture &amp; Client Delivery | Financial Modeling, AI Strategy, &amp; Enterprise Analytics</p>
+    <nav class="top-nav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#financial-modeling">Financial Analytics</a>
+      <a href="#projects">Selected Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
   <section id="about">
@@ -134,7 +142,7 @@
     </article>
 
     <article class="finance-item final-project">
-      <h3>Business Predictive Analytics: Credit Scoring, Churn Prediction, and Cost Optimization</h3>
+      <h3><span class="featured-label">Featured</span>Business Predictive Analytics: Credit Scoring, Churn Prediction, and Cost Optimization</h3>
       <p>Completed a multi-part business analytics project applying predictive modeling, machine learning, and optimization techniques to solve business problems across credit risk, customer retention, and supply chain cost minimization. Compared regression, classification, and optimization approaches using model performance metrics, cross-validation, ROC-AUC, lift curves, and decision-variable analysis.</p>
       <ul>
         <li>Built and compared supervised regression models to predict customer credit scores using financial and behavioral variables.</li>
@@ -154,7 +162,7 @@
   <section id="projects">
     <h2>Selected Technical &amp; Research Projects</h2>
       <div class="project">
-      <h3>Enterprise AI Decision-Support System for Student Retention and Advisor Workflow Optimization</h3>
+      <h3><span class="featured-label">Featured</span>Enterprise AI Decision-Support System for Student Retention and Advisor Workflow Optimization</h3>
       <p><strong>Project Summary:</strong> Designed an AI-powered Student Success Early Warning System for a mid-size university to identify at-risk first- and second-year students earlier, improve advisor prioritization, and support retention. The proposed system integrates Student Information System, Learning Management System, and cafeteria POS data into advisor-facing dashboards, using machine learning risk scoring, explainable AI, MLOps, and governance controls to support timely, ethical, human-centered intervention.</p>
       <ul>
         <li>Designed an enterprise AI decision-support concept to help universities identify at-risk students earlier and improve retention outcomes.</li>
@@ -228,48 +236,46 @@
     </div>
 
     <div class="project">
-      <h3>🏥 EHR Adoption DataSet Analysis – Case Study</h3>
+      <h3>EHR Adoption DataSet Analysis – Case Study</h3>
       <p><strong>Background:</strong> EHRs are foundational to modern healthcare, but adoption varies across institutions. This project explored adoption trends in non-federal acute care hospitals across the U.S.</p>
       <p><strong>Objective:</strong> Clean, model, and visualize a large-scale dataset to identify patterns in EHR adoption and usage, supporting data-driven healthcare strategy.</p>
       <p><strong>Tools & Technologies:</strong> PySpark, Pandas, NumPy, RandomForestRegressor, Big Data processing, Jupyter/Databricks, Data.gov dataset.</p>
-      <p><strong>Process & Contribution:</strong> 
-        <ul>
-          <li>Imported and validated raw healthcare data from Data.gov</li>
-          <li>Renamed schema fields for clarity and dropped non-essential columns</li>
-          <li>Handled missing values using a multimodel approach: RandomForestRegressor for high-value features and group-based or global mean imputation for the rest</li>
-          <li>Engineered a cleaned dataset ready for advanced visualization and analysis</li>
-        </ul>
-      </p>
+      <p><strong>Process & Contribution:</strong></p>
+      <ul>
+        <li>Imported and validated raw healthcare data from Data.gov</li>
+        <li>Renamed schema fields for clarity and dropped non-essential columns</li>
+        <li>Handled missing values using a multimodel approach: RandomForestRegressor for high-value features and group-based or global mean imputation for the rest</li>
+        <li>Engineered a cleaned dataset ready for advanced visualization and analysis</li>
+      </ul>
       <p><strong>Outcome:</strong> A structured and enriched dataset showcasing hospital EHR trends, enabling strategic insights for research and policy work.</p>
       <p><strong>Reflection:</strong> This project strengthened my ability to work with large healthcare datasets and build pipelines that integrate machine learning with meaningful real-world outcomes.</p>
       <a href="https://github.com/chelseaa1808/EHR-Adoption-DataSet-Analysis">View Project on GitHub</a>
       <p>
       <a href="https://dashboard-i2abrxb8fk9inffhtt3a4n.streamlit.app/" target="_blank" class="resume-btn">
-        🚀 View EHR Dashboard
+        View EHR Dashboard
       </a></p>
         
     </div>
     <div class="project">
-      <h3>🩺 The Digital Transformation of Healthcare</h3>
+      <h3>The Digital Transformation of Healthcare</h3>
       <p><strong>Project Type:</strong> Individual Academic Research </p> 
       <p><strong>Tools and Technologies:</strong>Tableau, Excel, FRED, Data.gov, HealthIT.gov, Census, World Bank</p>
       <p><strong>Summary:</strong> This solo project explores how digital technology and health IT adoption shape workforce dynamics, facility readiness, and patient access. I analyzed five public datasets and built dashboards to identify regional and structural disparities in EHR use and digital engagement.</p>
       
-      <p><strong>Key Highlights:</strong> 
-        <ul>
-          <li>Created interactive dashboards visualizing: EHR adoption by state and facility type, HIT employment and healthcare expenditure trends, and Relationship between household tech access and digital care uptake.</li>
-          <li>Delivered insights on how digital infrastructure affects health equity</li>
-          <li>Proposed research directions on patient outcomes and health IT gaps</li>
-        </ul>
-      </p>
+      <p><strong>Key Highlights:</strong></p>
+      <ul>
+        <li>Created interactive dashboards visualizing: EHR adoption by state and facility type, HIT employment and healthcare expenditure trends, and Relationship between household tech access and digital care uptake.</li>
+        <li>Delivered insights on how digital infrastructure affects health equity</li>
+        <li>Proposed research directions on patient outcomes and health IT gaps</li>
+      </ul>
       <p>
-      <a href="assets/healthcare.mp4" class="resume-btn" download>🎥 Watch the Presentation</a>
-      <a href="assets/healthcare.twbx" class="resume-btn" download>📈 View Dashboards</a>
+      <a href="assets/healthcare.mp4" class="resume-btn" download>Watch the Presentation</a>
+      <a href="assets/healthcare.twbx" class="resume-btn" download>View Dashboards</a>
       
     </div>
 
     <div class="project">
-      <h3>🌍 AI Governance and Financial Risk Mitigation for a Global ERP Initiative </h3>
+      <h3>AI Governance and Financial Risk Mitigation for a Global ERP Initiative </h3>
       <p><strong>Role:</strong> Project Lead</p> 
       <p><strong>Type:</strong> Group Strategy & Governance Plan </p> 
       <p><strong>Course:</strong> ISM 6155 – Enterprise Information Systems Management </p>
@@ -287,46 +293,46 @@
       <p>Delivered a financially resilient AI governance and risk management framework ready to scale internationally. Structured the plan to safeguard revenue continuity, enhance investor confidence, and reduce total cost of compliance over time.</p>
       <p><strong>Core Skills Demonstrated</strong></p> 
       <p>Financial Risk Management | AI Governance | Regulatory Compliance (GDPR, CCPA) | Operational Risk Assessment | Cost Mitigation Planning | Enterprise Risk Strategy</p>
-      <a href="assets/report.docx" class="resume-btn" download> 💼 View Report </a>
+      <a href="assets/report.docx" class="resume-btn" download>View Report</a>
       
       
     </div>
 
     <div class="project">
-      <h3>🧪 Independent Study: AI Platform Development</h3>
+      <h3>Independent Study: AI Platform Development</h3>
       <p>Developed and maintained server-based AI platforms for research support. Handled data analysis, visualization, and presentations to guide data-driven decision making.</p>
       <p><strong>Tech:</strong> Python, Docker, Flask, Django, FastAPI, JavaScript, TypeScript, SQL, NoSQL, AWS, GCP, Azure</p>
     </div>
 
     <div class="project">
-      <h3>📊 AI-ML-Exploratory Work</h3>
+      <h3>AI-ML-Exploratory Work</h3>
       <p>Explorations in decision trees, ensemble methods, and neural networks.</p>
       <a href="https://github.com/chelseaa1808/AI-ML-Exploratory-Work">View Project on GitHub</a>
     </div>
 
     <div class="project">
-      <h3>🤖 Research Chattr Platform</h3>
+      <h3>Research Chattr Platform</h3>
       <p>Built a customizable AI chatbot platform to support research teams in interactive studies.</p>
       <a href="https://github.com/chelseaa1808/Research-Team-Chattr-Platform">View Project on GitHub</a>
     </div>
 
     <div class="project">
-      <h3>💬 ResearchChat Platform</h3>
+      <h3>ResearchChat Platform</h3>
       <p>A live webpage enabling human-AI interaction for behavioral research and conversational analysis.</p>
       <a href="https://github.com/chelseaa1808/chat.researchchat.io">Visit Repository</a>
     </div>
 
     <div class="project">
-      <h3>⚙️ SWARM Algorithm Optimization</h3>
+      <h3>SWARM Algorithm Optimization</h3>
       <p>Designed a flexible optimization framework with custom constraints and topologies for domain-specific solutions like EHR imputation.</p>
       <a href="https://github.com/chelseaa1808/SWARM">View Project on GitHub</a>
     </div>
   </section>
 
-  <footer>
-    <p>📫 Contact: chelsea.anestal@gmail.com</p>
-    <p>🔗 LinkedIn: <a href="https://linkedin.com/in/chelsea-anestal" target="_blank">linkedin.com/in/chelsea-anestal</a></p>
-    <a href="assets/Resume-ML_AI -Chelsea Anestal.pdf" class="resume-btn" download>📄 Download My Resume</a>
+  <footer id="contact">
+    <p>Contact: chelsea.anestal@gmail.com</p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/chelsea-anestal" target="_blank">linkedin.com/in/chelsea-anestal</a></p>
+    <a href="assets/Resume-ML_AI -Chelsea Anestal.pdf" class="resume-btn" download>Download My Resume</a>
 
   </footer>
 </body>
