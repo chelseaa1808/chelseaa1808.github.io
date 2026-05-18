@@ -1,5 +1,9 @@
 
 /* Base layout */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0 auto;
@@ -36,14 +40,38 @@ header {
 }
 
 .header-subtitle {
-  margin: 0;
+  margin: 0 0 0.85rem;
   color: #334155;
   font-weight: 600;
+  max-width: 900px;
+  font-size: clamp(0.93rem, 1.4vw, 1rem);
+  line-height: 1.5;
 }
 
 .section-intro {
   margin-top: 0;
   color: #334155;
+}
+
+.top-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.top-nav a {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  background-color: #f8fbff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+.top-nav a:hover {
+  text-decoration: none;
+  background-color: #e8f0ff;
 }
 
 /* Links */
@@ -112,6 +140,20 @@ a:hover {
   background-color: #f8fafc;
 }
 
+.featured-label {
+  display: inline-block;
+  margin-right: 0.45rem;
+  margin-bottom: 0.35rem;
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  background-color: #dbeafe;
+  color: #1e3a8a;
+  vertical-align: middle;
+}
+
 .link-group {
   display: flex;
   flex-wrap: wrap;
@@ -120,4 +162,14 @@ a:hover {
 
 .link-group .resume-btn {
   margin-top: 0;
+}
+
+@media (max-width: 700px) {
+  body {
+    padding: 1.25rem 0.85rem 2rem;
+  }
+
+  header, section, footer {
+    padding: 1.15rem;
+  }
 }
