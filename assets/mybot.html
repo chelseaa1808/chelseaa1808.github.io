@@ -1,0 +1,421 @@
+<!DOCTYPE html> 
+
+<html lang="en"> 
+
+<head> 
+
+    <meta charset="UTF-8"> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+
+    <title>Accounting Assistant - REA Framework Analysis</title> 
+
+    <style> 
+
+        body { 
+
+            font-family: Arial, sans-serif; 
+
+            margin: 0; 
+
+            padding: 0; 
+
+            background-color: #f4f4f9; 
+
+            color: #333; 
+
+        } 
+
+        header { 
+
+            background-color: #4CAF50; 
+
+            color: white; 
+
+            padding: 20px; 
+
+            text-align: center; 
+
+        } 
+
+        h1 { 
+
+            margin: 0; 
+
+            font-size: 2em; 
+
+        } 
+
+        h2 { 
+
+            font-size: 1.5em; 
+
+            color: #444; 
+
+        } 
+
+        .content { 
+
+            padding: 20px; 
+
+            max-width: 900px; 
+
+            margin: 20px auto; 
+
+            background-color: white; 
+
+            border-radius: 8px; 
+
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+
+        } 
+
+        .section-title { 
+
+            font-size: 1.2em; 
+
+            margin-bottom: 10px; 
+
+            color: #333; 
+
+        } 
+
+        .bot-container { 
+
+            margin-top: 20px; 
+
+            display: flex; 
+
+            justify-content: center; 
+
+        } 
+
+        iframe { 
+
+            border: none; 
+
+            width: 100%; 
+
+            height: 600px; 
+
+            max-width: 500px; 
+
+            border-radius: 8px; 
+
+        } 
+
+        footer { 
+
+            text-align: center; 
+
+            padding: 10px; 
+
+            background-color: #333; 
+
+            color: white; 
+
+            font-size: 0.8em; 
+
+        } 
+
+        .image-container { 
+
+            text-align: center; 
+
+            margin-top: 20px; 
+
+        } 
+
+        img { 
+
+            max-width: 100%; 
+
+            height: auto; 
+
+            border-radius: 8px; 
+
+        } 
+
+        table { 
+
+            width: 100%; 
+
+            margin-top: 20px; 
+
+            border-collapse: collapse; 
+
+        } 
+
+        table, th, td { 
+
+            border: 1px solid #ddd; 
+
+        } 
+
+        th, td { 
+
+            padding: 8px; 
+
+            text-align: left; 
+
+        } 
+
+        th { 
+
+            background-color: #f2f2f2; 
+
+        } 
+
+    </style> 
+
+    <!-- Include Chart.js Library --> 
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+
+</head> 
+
+<body> 
+
+ 
+
+    <header> 
+
+        <h1>Accounting Agent</h1> 
+
+    </header> 
+
+ 
+
+    <div class="content"> 
+
+        <section> 
+
+            <h2 class="section-title">About the Dataset</h2> 
+
+            <p> 
+
+                The dataset being used for this analysis consists of purchase order data with the following columns: 
+
+            </p> 
+
+            <ul> 
+
+                <li><strong>PO_NO:</strong> Purchase Order number (Event)</li> 
+
+                <li><strong>VENDOR_NO:</strong> Vendor identifier (Agent)</li> 
+
+                <li><strong>VENDOR_INVOICE_AMOUNT:</strong> Invoice amount from the vendor (Resource demanded)</li> 
+
+                <li><strong>TOTAL_PAYMENTS_MADE:</strong> Total cash paid so far for this PO (Resource exchanged)</li> 
+
+                <li><strong>REMAINING_BALANCE:</strong> Remaining balance to be paid (Resource still owed)</li> 
+
+            </ul> 
+
+        </section> 
+
+ 
+
+        <section> 
+
+            <h2 class="section-title">Analysis Question: Which 10 Purchase Orders have the Highest Remaining Balance?</h2> 
+
+            <p> 
+
+                In this analysis, we are looking to identify the top 10 purchase orders with the highest remaining balance. The remaining balance represents the "Resource still owed" that is yet to be exchanged to fulfill the payment obligation. In the REA framework: 
+
+            </p> 
+
+            <ul> 
+
+                <li><strong>Resource:</strong> The "remaining balance" for each PO, which is the amount yet to be paid.</li> 
+
+                <li><strong>Event:</strong> The "purchase order" (PO_NO), which represents a business event where a vendor provides goods or services.</li> 
+
+                <li><strong>Agent:</strong> The "vendor" (VENDOR_NO), which is the entity providing the resources and expecting payment.</li> 
+
+            </ul> 
+
+            <p> 
+
+                Based on the dataset provided, all purchase orders have an equal remaining balance of 578, which makes the question relatively straightforward—each of the purchase orders from the list has the same remaining balance, meaning they are all tied for first place in this analysis. You can find the specific PO numbers and vendor IDs below: 
+
+            </p> 
+
+            <table> 
+
+                <thead> 
+
+                    <tr> 
+
+                        <th>PO_NO</th> 
+
+                        <th>VENDOR_NO</th> 
+
+                        <th>VENDOR_INVOICE_AMOUNT</th> 
+
+                        <th>TOTAL_PAYMENTS_MADE</th> 
+
+                        <th>REMAINING_BALANCE</th> 
+
+                    </tr> 
+
+                </thead> 
+
+                <tbody> 
+
+                    <tr><td>2</td><td>35</td><td>578</td><td>0</td><td>578</td></tr> 
+
+                    <tr><td>14</td><td>30</td><td>578</td><td>0</td><td>578</td></tr> 
+
+                    <tr><td>39</td><td>33</td><td>578</td><td>0</td><td>578</td></tr> 
+
+                    <tr><td>57</td><td>34</td><td>578</td><td>0</td><td>578</td></tr> 
+
+                    <tr><td>58</td><td>40</td><td>578</td><td>0</td><td>578</td></tr> 
+
+                    <tr><td>150</td><td>34</td><td>578</td><td>0</td><td>578</td></tr> 
+
+                    <tr><td>167</td><td>44</td><td>578</td><td>0</td><td>578</td></tr> 
+
+                    <tr><td>254</td><td>26</td><td>578</td><td>0</td><td>578</td></tr> 
+
+                    <tr><td>343</td><td>45</td><td>578</td><td>0</td><td>578</td></tr> 
+
+                    <tr><td>366</td><td>32</td><td>578</td><td>0</td><td>578</td></tr> 
+
+                </tbody> 
+
+            </table> 
+
+        </section> 
+
+ 
+
+        <!-- Bar Chart Section --> 
+
+        <section> 
+
+            <h2 class="section-title">Purchase Orders Remaining Balance Visualization</h2> 
+
+            <p> 
+
+                The following bar chart visualizes the remaining balance of each purchase order. As you can see, all the purchase orders have the same remaining balance of 578. 
+
+            </p> 
+
+            <canvas id="remainingBalanceChart" style="max-width: 600px; margin: 0 auto;"></canvas> 
+
+        </section> 
+
+ 
+
+        <section class="bot-container"> 
+
+            <iframe src="https://cdn.botpress.cloud/webchat/v3.3/shareable.html?configUrl=https://files.bpcontent.cloud/2025/11/02/15/20251102153125-DUPL37XC.json" title="Accounting Assistant Bot"></iframe> 
+
+        </section> 
+
+    </div> 
+
+ 
+
+    <footer> 
+
+        <p>&copy; 2025 Accounting Assistant. All rights reserved.</p> 
+
+    </footer> 
+
+ 
+
+    <script> 
+
+        // Chart.js code to display the bar chart 
+
+        const ctx = document.getElementById('remainingBalanceChart').getContext('2d'); 
+
+        const remainingBalanceChart = new Chart(ctx, { 
+
+            type: 'bar', 
+
+            data: { 
+
+                labels: ['PO#2', 'PO#14', 'PO#39', 'PO#57', 'PO#58', 'PO#150', 'PO#167', 'PO#254', 'PO#343', 'PO#366'], 
+
+                datasets: [{ 
+
+                    label: 'Remaining Balance ($)', 
+
+                    data: [578, 578, 578, 578, 578, 578, 578, 578, 578, 578], // Same value for all POs 
+
+                    backgroundColor: '#4CAF50', // Green bars 
+
+                    borderColor: '#333', 
+
+                    borderWidth: 1 
+
+                }] 
+
+            }, 
+
+            options: { 
+
+                scales: { 
+
+                    y: { 
+
+                        beginAtZero: true, 
+
+                        ticks: { 
+
+                            stepSize: 100, 
+
+                            callback: function(value) { return '$' + value; } 
+
+                        } 
+
+                    } 
+
+                }, 
+
+                plugins: { 
+
+                    legend: { 
+
+                        display: false // Hide the legend since all data is the same 
+
+                    }, 
+
+                    tooltip: { 
+
+                        callbacks: { 
+
+                            label: function(tooltipItem) { 
+
+                                return tooltipItem.raw + ' USD'; 
+
+                            } 
+
+                        } 
+
+                    } 
+
+                } 
+
+            } 
+
+        }); 
+
+    </script> 
+
+ 
+
+</body> 
+
+</html> 
+
+ 
+
+ 
