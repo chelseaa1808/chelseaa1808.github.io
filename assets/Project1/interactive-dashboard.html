@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Performance Interactive Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --ink: #1f2937;
+      --accent: #1d4ed8;
+      --muted: #475569;
+      --border: #dbe2ea;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.2rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    h1, h2 {
+      color: #1e3a8a;
+      margin-top: 0;
+    }
+    .muted {
+      color: var(--muted);
+      margin: 0.25rem 0 0.6rem;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: end;
+    }
+    .control {
+      display: flex;
+      flex-direction: column;
+      min-width: 170px;
+      gap: 0.25rem;
+    }
+    label {
+      font-size: 0.84rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    select, button {
+      padding: 0.45rem 0.6rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      background: #fff;
+    }
+    button {
+      cursor: pointer;
+      font-weight: 600;
+      color: #1e3a8a;
+      background: #eff6ff;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.7rem;
+      margin-top: 0.75rem;
+    }
+    .metric {
+      background: #f8fbff;
+      border: 1px solid #dbeafe;
+      border-radius: 10px;
+      padding: 0.65rem;
+    }
+    .metric .label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: #475569;
+      font-weight: 700;
+    }
+    .metric .value {
+      font-size: 1.2rem;
+      color: #1e3a8a;
+      font-weight: 700;
+      margin-top: 0.15rem;
+    }
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 0.9rem;
+    }
+    .chart {
+      min-height: 360px;
+    }
+    .note {
+      font-size: 0.88rem;
+      color: #334155;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 0.65rem;
+      margin-top: 0.8rem;
+    }
+    @media (max-width: 760px) {
+      .chart-grid {
+        grid-template-columns: 1fr;
+      }
+      .chart {
+        min-height: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="card">
+      <h1>Financial Performance Interactive Dashboard</h1>
+      <p class="muted">Lightweight interactive view built from the Tableau workbook dataset (100 companies, 1,000 firm-year observations).</p>
+
+      <div class="controls">
+        <div class="control">
+          <label for="company-filter">Company</label>
+          <select id="company-filter"></select>
+        </div>
+        <div class="control">
+          <label for="year-start">Year Start</label>
+          <select id="year-start"></select>
+        </div>
+        <div class="control">
+          <label for="year-end">Year End</label>
+          <select id="year-end"></select>
+        </div>
+        <button id="reset-btn" type="button">Reset filters</button>
+      </div>
+
+      <div class="metric-grid" id="metric-grid"></div>
+      <p class="note"><strong>Data handling note:</strong> This dashboard uses portfolio-safe data from course artifacts (public/anonymized educational dataset) and is intended for demonstration of analysis workflow and decision-support framing.</p>
+    </section>
+
+    <section class="chart-grid">
+      <article class="card"><h2>Margin Trends by Year</h2><div id="margin-trend" class="chart"></div></article>
+      <article class="card"><h2>Leverage vs Net Margin</h2><div id="leverage-scatter" class="chart"></div></article>
+      <article class="card"><h2>Revenue Growth Distribution</h2><div id="growth-hist" class="chart"></div></article>
+      <article class="card"><h2>Net Margin Spread by Year</h2><div id="net-margin-box" class="chart"></div></article>
+    </section>
+  </main>
+
+  <script>
+    const state = { rows: [] };
+
+    const companyFilter = document.getElementById("company-filter");
+    const yearStart = document.getElementById("year-start");
+    const yearEnd = document.getElementById("year-end");
+    const resetBtn = document.getElementById("reset-btn");
+    const metricGrid = document.getElementById("metric-grid");
+
+    function n(value) {
+      const num = Number(value);
+      return Number.isFinite(num) ? num : null;
+    }
+
+    function mean(rows, key) {
+      const values = rows.map((r) => r[key]).filter((v) => Number.isFinite(v));
+      if (!values.length) return null;
+      return values.reduce((a, b) => a + b, 0) / values.length;
+    }
+
+    function pct(value) {
+      if (!Number.isFinite(value)) return "N/A";
+      return `${(value * 100).toFixed(2)}%`;
+    }
+
+    function populateSelect(select, values, prependAll = false) {
+      select.innerHTML = "";
+      if (prependAll) {
+        const allOpt = document.createElement("option");
+        allOpt.value = "ALL";
+        allOpt.textContent = "All companies";
+        select.appendChild(allOpt);
+      }
+      values.forEach((value) => {
+        const opt = document.createElement("option");
+        opt.value = value;
+        opt.textContent = value;
+        select.appendChild(opt);
+      });
+    }
+
+    function getFilteredRows() {
+      const company = companyFilter.value;
+      const start = Number(yearStart.value);
+      const end = Number(yearEnd.value);
+      return state.rows.filter((row) => {
+        const companyMatch = company === "ALL" || row.company === company;
+        const yearMatch = row.year >= start && row.year <= end;
+        return companyMatch && yearMatch;
+      });
+    }
+
+    function renderMetrics(rows) {
+      const totalRevenue = rows.reduce((sum, row) => sum + (row.revenue || 0), 0);
+      const metrics = [
+        { label: "Observations", value: rows.length.toLocaleString() },
+        { label: "Average Net Margin", value: pct(mean(rows, "net_margin")) },
+        { label: "Average EBIT Margin", value: pct(mean(rows, "ebit_margin")) },
+        { label: "Average Gross Margin", value: pct(mean(rows, "gross_margin")) },
+        { label: "Average Debt Ratio", value: pct(mean(rows, "debt_ratio")) },
+        { label: "Total Revenue", value: `$${(totalRevenue / 1e9).toFixed(2)}B` }
+      ];
+      metricGrid.innerHTML = metrics.map((m) => (
+        `<div class="metric"><div class="label">${m.label}</div><div class="value">${m.value}</div></div>`
+      )).join("");
+    }
+
+    function renderMarginTrend(rows) {
+      const grouped = {};
+      rows.forEach((row) => {
+        if (!grouped[row.year]) grouped[row.year] = [];
+        grouped[row.year].push(row);
+      });
+      const years = Object.keys(grouped).map(Number).sort((a, b) => a - b);
+      const trace = (name, key, color) => ({
+        x: years,
+        y: years.map((y) => mean(grouped[y], key)),
+        type: "scatter",
+        mode: "lines+markers",
+        name,
+        line: { width: 2.5, color }
+      });
+      Plotly.react("margin-trend", [
+        trace("Gross Margin", "gross_margin", "#1d4ed8"),
+        trace("EBIT Margin", "ebit_margin", "#0f766e"),
+        trace("Net Margin", "net_margin", "#7c3aed")
+      ], {
+        margin: { t: 20, r: 18, b: 46, l: 46 },
+        yaxis: { tickformat: ",.0%" },
+        legend: { orientation: "h" }
+      }, { displaylogo: false, responsive: true });
+    }
+
+    function renderLeverageScatter(rows) {
+      const points = rows.filter((r) => Number.isFinite(r.debt_ratio) && Number.isFinite(r.net_margin));
+      Plotly.react("leverage-scatter", [{
+        x: points.map((r) => r.debt_ratio),
+        y: points.map((r) => r.net_margin),
+        text: points.map((r) => `${r.company} (${r.year})`),
+        mode: "markers",
+        type: "scatter",
+        marker: {
+          size: points.map((r) => {
+            const rev = Number.isFinite(r.revenue) ? r.revenue : 0;
+            return Math.max(6, Math.min(22, Math.log10(Math.max(rev, 1)) * 2.2));
+          }),
+          color: points.map((r) => r.year),
+          colorscale: "Blues",
+          opacity: 0.7,
+          line: { width: 0.4, color: "#1e3a8a" }
+        },
+        hovertemplate: "%{text}<br>Debt Ratio: %{x:.2f}<br>Net Margin: %{y:.2%}<extra></extra>"
+      }], {
+        margin: { t: 20, r: 18, b: 46, l: 46 },
+        xaxis: { title: "Debt Ratio" },
+        yaxis: { title: "Net Margin", tickformat: ",.0%" }
+      }, { displaylogo: false, responsive: true });
+    }
+
+    function renderGrowthHistogram(rows) {
+      const values = rows.map((r) => r.revenue_growth).filter((v) => Number.isFinite(v));
+      Plotly.react("growth-hist", [{
+        x: values,
+        type: "histogram",
+        marker: { color: "#1d4ed8", line: { color: "#1e3a8a", width: 0.6 } },
+        nbinsx: 28
+      }], {
+        margin: { t: 20, r: 18, b: 46, l: 46 },
+        xaxis: { title: "Revenue Growth" },
+        yaxis: { title: "Count" }
+      }, { displaylogo: false, responsive: true });
+    }
+
+    function renderNetMarginBox(rows) {
+      const grouped = {};
+      rows.forEach((row) => {
+        if (!Number.isFinite(row.net_margin)) return;
+        if (!grouped[row.year]) grouped[row.year] = [];
+        grouped[row.year].push(row.net_margin);
+      });
+      const years = Object.keys(grouped).map(Number).sort((a, b) => a - b);
+      const traces = years.map((year) => ({
+        y: grouped[year],
+        type: "box",
+        name: String(year),
+        boxmean: true
+      }));
+      Plotly.react("net-margin-box", traces, {
+        margin: { t: 20, r: 18, b: 46, l: 46 },
+        yaxis: { title: "Net Margin", tickformat: ",.0%" }
+      }, { displaylogo: false, responsive: true });
+    }
+
+    function refresh() {
+      const start = Number(yearStart.value);
+      const end = Number(yearEnd.value);
+      if (start > end) {
+        yearEnd.value = yearStart.value;
+      }
+      const rows = getFilteredRows();
+      renderMetrics(rows);
+      renderMarginTrend(rows);
+      renderLeverageScatter(rows);
+      renderGrowthHistogram(rows);
+      renderNetMarginBox(rows);
+    }
+
+    function init(rows) {
+      state.rows = rows.filter((row) => Number.isFinite(row.year) && row.company);
+
+      const companies = Array.from(new Set(state.rows.map((r) => r.company))).sort();
+      const years = Array.from(new Set(state.rows.map((r) => r.year))).sort((a, b) => a - b);
+
+      populateSelect(companyFilter, companies, true);
+      populateSelect(yearStart, years);
+      populateSelect(yearEnd, years);
+
+      yearStart.value = String(years[0]);
+      yearEnd.value = String(years[years.length - 1]);
+
+      [companyFilter, yearStart, yearEnd].forEach((el) => {
+        el.addEventListener("change", refresh);
+      });
+
+      resetBtn.addEventListener("click", () => {
+        companyFilter.value = "ALL";
+        yearStart.value = String(years[0]);
+        yearEnd.value = String(years[years.length - 1]);
+        refresh();
+      });
+
+      refresh();
+    }
+
+    Papa.parse("financial_200_features_dataset.csv", {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: ({ data }) => {
+        const rows = data.map((row) => ({
+          company: row.company,
+          year: n(row.year),
+          revenue: n(row.revenue),
+          debt_ratio: n(row.debt_ratio),
+          net_margin: n(row.net_margin),
+          ebit_margin: n(row.ebit_margin),
+          gross_margin: n(row.gross_margin),
+          asset_turnover: n(row.asset_turnover),
+          revenue_growth: n(row.revenue_growth)
+        }));
+        init(rows);
+      },
+      error: () => {
+        document.body.innerHTML = "<main><p>Unable to load dashboard dataset.</p></main>";
+      }
+    });
+  </script>
+</body>
+</html>
