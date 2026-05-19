@@ -272,6 +272,43 @@ a:hover {
   margin-top: 0.3rem;
 }
 
+.artifact-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.55rem;
+}
+
+.artifact-card {
+  border: 1px solid #dbeafe;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 0.75rem;
+}
+
+.artifact-card h4 {
+  margin: 0 0 0.25rem;
+  color: #1e3a8a;
+}
+
+.artifact-card p {
+  margin: 0.1rem 0 0.55rem;
+  color: #334155;
+  font-size: 0.93rem;
+}
+
+.artifact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.artifact-actions .resume-btn {
+  margin-top: 0;
+  padding: 8px 14px;
+  font-size: 0.86rem;
+}
+
 .confidentiality-note {
   margin-top: 1rem;
   padding: 0.8rem 0.9rem;
