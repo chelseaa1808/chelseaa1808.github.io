@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chelsea Anestal | MBA Student Portfolio</title>
   <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mammoth@1.9.0/mammoth.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -547,6 +550,15 @@
     <a href="assets/Resume-ML_AI -Chelsea Anestal.pdf" class="resume-btn" download>Download My Resume</a>
 
   </footer>
+  <div id="artifact-preview-modal" class="artifact-preview-modal" hidden>
+    <div class="artifact-preview-panel" role="dialog" aria-modal="true" aria-labelledby="artifact-preview-title">
+      <div class="artifact-preview-header">
+        <h3 id="artifact-preview-title">Artifact Preview</h3>
+        <button type="button" class="artifact-close-btn" id="artifact-preview-close" aria-label="Close preview">Close</button>
+      </div>
+      <div class="artifact-preview-body" id="artifact-preview-body"></div>
+    </div>
+  </div>
   <script src="script.js" defer></script>
 </body>
 </html>
