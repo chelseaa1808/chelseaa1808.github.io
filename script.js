@@ -26,6 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  const initiallyActiveButton =
+    filterButtons.find((button) => button.classList.contains("active")) ||
+    filterButtons[0];
+
+  if (initiallyActiveButton) {
+    setFilter(initiallyActiveButton.dataset.filter || "all");
+  }
+
   if (expandAllButton) {
     expandAllButton.addEventListener("click", () => {
       detailSections.forEach((detail) => {
