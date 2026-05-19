@@ -74,6 +74,40 @@ header {
   background-color: #e8f0ff;
 }
 
+.project-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.filter-group,
+.detail-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-btn,
+.toolbar-btn {
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #1e3a8a;
+  border-radius: 999px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filter-btn.active,
+.toolbar-btn:hover,
+.filter-btn:hover {
+  background-color: #dbeafe;
+  border-color: #93c5fd;
+}
+
 /* Links */
 a {
   color: #1d4ed8;
@@ -154,6 +188,99 @@ a:hover {
   vertical-align: middle;
 }
 
+.featured-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.featured-project-card {
+  border: 1px solid #dbeafe;
+  border-left: 4px solid #3b82f6;
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  background: #ffffff;
+}
+
+.featured-project-card.hidden {
+  display: none;
+}
+
+.executive-list {
+  margin-top: 0.35rem;
+  margin-bottom: 0.7rem;
+}
+
+.strategic-outcome {
+  margin-top: 0.1rem;
+}
+
+.metric-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.6rem 0 0.8rem;
+}
+
+.metric-chips span {
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background-color: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.project-detail {
+  border-top: 1px dashed #cbd5e1;
+  padding-top: 0.65rem;
+}
+
+.project-detail summary {
+  font-weight: 600;
+  color: #1e3a8a;
+  cursor: pointer;
+}
+
+.artifact-note {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.55rem 0.65rem;
+}
+
+.model-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.55rem 0;
+}
+
+.model-table th,
+.model-table td {
+  border: 1px solid #dbe2ea;
+  padding: 0.45rem 0.55rem;
+  vertical-align: top;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.model-table th {
+  background-color: #f1f5f9;
+}
+
+.checklist {
+  margin-top: 0.3rem;
+}
+
+.confidentiality-note {
+  margin-top: 1rem;
+  padding: 0.8rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid #dbeafe;
+  background-color: #f8fbff;
+  color: #334155;
+}
+
 .link-group {
   display: flex;
   flex-wrap: wrap;
@@ -171,5 +298,16 @@ a:hover {
 
   header, section, footer {
     padding: 1.15rem;
+  }
+
+  .project-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .model-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
   }
 }
