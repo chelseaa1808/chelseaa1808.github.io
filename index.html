@@ -13,6 +13,7 @@
     <nav class="top-nav" aria-label="Primary">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
+      <a href="#featured-projects">Featured Projects</a>
       <a href="#financial-modeling">Financial Analytics</a>
       <a href="#projects">Selected Projects</a>
       <a href="#contact">Contact</a>
@@ -51,6 +52,145 @@
       <span class="badge">Cost Mitigation Planning</span>
       <span class="badge">Enterprise Risk Strategy</span>
     </div>
+  </section>
+
+  <section id="featured-projects">
+    <h2>Featured Applied Analytics, Finance, &amp; AI Projects</h2>
+    <p class="section-intro">Each featured case study is structured as: Problem - Approach - Outcome - Skills - Artifact.</p>
+
+    <div class="project-toolbar">
+      <div class="filter-group" role="group" aria-label="Filter featured projects">
+        <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="filter-btn" data-filter="finance" aria-pressed="false">Finance Modeling</button>
+        <button type="button" class="filter-btn" data-filter="predictive" aria-pressed="false">Predictive Analytics</button>
+        <button type="button" class="filter-btn" data-filter="ai" aria-pressed="false">Enterprise AI</button>
+        <button type="button" class="filter-btn" data-filter="chatbot" aria-pressed="false">Accounting Bot</button>
+      </div>
+      <div class="detail-controls">
+        <button type="button" class="toolbar-btn" id="expand-all">Expand all</button>
+        <button type="button" class="toolbar-btn" id="collapse-all">Collapse all</button>
+      </div>
+    </div>
+
+    <div class="featured-grid">
+      <article class="featured-project-card" data-category="finance">
+        <h3>Financial Modeling &amp; Investment Analytics</h3>
+        <p><strong>Executive Summary</strong></p>
+        <ul class="executive-list">
+          <li><strong>Problem:</strong> How should portfolio allocation and downside protection be evaluated across multi-sector equities?</li>
+          <li><strong>Approach:</strong> Built a multi-sector investment analytics model using return/risk analysis, efficient frontier and capital market line frameworks, and protective put analysis.</li>
+          <li><strong>Outcome:</strong> Supported investment decision-making by comparing risk-return tradeoffs, downside exposure, and options-based protection strategies.</li>
+          <li><strong>Skills:</strong> Portfolio analytics, options analysis, scenario analysis, financial modeling, risk-adjusted decision support.</li>
+        </ul>
+        <p class="strategic-outcome"><strong>Strategic Outcome:</strong> Produced a structured framework to compare allocation strategies under base, upside, and downside assumptions.</p>
+        <div class="metric-chips">
+          <span>Efficient Frontier</span>
+          <span>Capital Market Line</span>
+          <span>Protective Puts</span>
+          <span>Scenario Analysis</span>
+        </div>
+        <details class="project-detail">
+          <summary>Assumptions, artifacts, and model design standards</summary>
+          <p><strong>Key Assumptions &amp; Modeling Logic:</strong> Assumptions were selected based on publicly available market data, historical monthly return patterns, risk-free rate inputs, and option contract characteristics at analysis time. Scenario cases were used to test how expected return, volatility, and downside protection changed portfolio outcomes.</p>
+          <p class="artifact-note"><strong>Artifact Note:</strong> Portfolio artifact includes a sanitized financial model with separate tabs for inputs, assumptions, calculations, outputs, sensitivity analysis, and dashboard visuals. Data is anonymized, public, or redacted.</p>
+          <table class="model-table">
+            <thead>
+              <tr>
+                <th>Tab</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>README / Executive Summary</td><td>Project goal, thesis, tools, and key findings</td></tr>
+              <tr><td>Raw Data</td><td>Historical prices, returns, and assumptions</td></tr>
+              <tr><td>Inputs &amp; Assumptions</td><td>Risk-free rate, expected returns, and option inputs</td></tr>
+              <tr><td>Calculations</td><td>Volatility, covariance, beta, delta, and Sharpe ratio</td></tr>
+              <tr><td>Portfolio Model</td><td>Weights, expected return, risk, and efficient frontier</td></tr>
+              <tr><td>Scenario Analysis</td><td>Base, downside, and upside sensitivity views</td></tr>
+              <tr><td>Visual Dashboard</td><td>CML chart, risk-return summary, and portfolio visuals</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Model Design Standards</strong></p>
+          <ul class="checklist">
+            <li>Inputs, assumptions, calculations, and outputs are separated into labeled sections.</li>
+            <li>Dynamic formulas are used where possible to reduce hardcoding risk.</li>
+            <li>Scenario analysis includes base, upside, and downside assumptions.</li>
+            <li>Charts and tables are formatted for executive-level readability.</li>
+            <li>Public, synthetic, anonymized, or redacted data is used.</li>
+          </ul>
+          <div class="link-group">
+            <a href="assets/Final Project -C.Anestal_PortfolioManagementFinancialAnalysis.xlsm" class="resume-btn" download>Download Financial Modeling Artifact</a>
+          </div>
+        </details>
+      </article>
+
+      <article class="featured-project-card" data-category="predictive">
+        <h3>Predictive Analytics, Machine Learning &amp; Optimization</h3>
+        <p><strong>Executive Summary</strong></p>
+        <ul class="executive-list">
+          <li><strong>Problem:</strong> Which analytical methods best support decisions in credit risk, customer retention, and operational cost optimization?</li>
+          <li><strong>Approach:</strong> Compared regression, classification, and optimization approaches using train-test validation, cross-validation, ROC-AUC, lift curves, and cost-minimization logic.</li>
+          <li><strong>Outcome:</strong> Identified methods that balanced predictive performance, interpretability, and business usability for risk scoring and retention outreach.</li>
+          <li><strong>Skills:</strong> Regression, classification, optimization, model comparison, and business decision analytics.</li>
+        </ul>
+        <p class="strategic-outcome"><strong>Strategic Outcome:</strong> Demonstrated how model selection should be tied to business context, not only algorithm performance.</p>
+        <div class="metric-chips">
+          <span>AUC 0.9029</span>
+          <span>10-Fold CV</span>
+          <span>RMSE/MAE/R²</span>
+          <span>Lift Curves</span>
+        </div>
+        <details class="project-detail">
+          <summary>Model quality, assumptions, and artifact</summary>
+          <p><strong>Key Assumptions &amp; Modeling Logic:</strong> Model design balanced accuracy, interpretability, and implementation practicality for business use cases where stakeholder trust and actionability were required.</p>
+          <p><strong>Model Comparison Focus:</strong> Regression (credit score), classification (churn), and optimization (cost minimization) were evaluated as decision-support tools for different business functions.</p>
+          <div class="link-group">
+            <a href="assets/C.Anestal_Project 2 Analytics Report.docx" class="resume-btn" download>Download Predictive Analytics Report</a>
+          </div>
+        </details>
+      </article>
+
+      <article class="featured-project-card" data-category="ai">
+        <h3>AI-Powered Student Success Early Warning System</h3>
+        <p><strong>Executive Summary</strong></p>
+        <ul class="executive-list">
+          <li><strong>Problem:</strong> How can universities identify at-risk students earlier and improve advisor prioritization without removing human judgment?</li>
+          <li><strong>Approach:</strong> Proposed an enterprise AI decision-support design integrating SIS, LMS, and POS signals with explainable ML, MLOps, and governance controls.</li>
+          <li><strong>Outcome:</strong> Connected model design to measurable retention outcomes, advisor workflow gains, and responsible AI practices.</li>
+          <li><strong>Skills:</strong> Enterprise AI strategy, governance, MLOps, explainable AI, and workflow transformation.</li>
+        </ul>
+        <p class="strategic-outcome"><strong>Strategic Outcome:</strong> Positioned AI as an advisor co-pilot to improve intervention timing, consistency, and follow-through.</p>
+        <details class="project-detail">
+          <summary>Governance assumptions and implementation framing</summary>
+          <p><strong>Key Assumptions &amp; Modeling Logic:</strong> Model design assumptions prioritized interpretability, workflow integration, and responsible AI governance because the system supports advisor decision-making rather than fully automating student interventions.</p>
+          <div class="link-group">
+            <a href="assets/Group 9 Final Project Report.docx" class="resume-btn" download>Download Enterprise AI Project Report</a>
+          </div>
+        </details>
+      </article>
+
+      <article class="featured-project-card" data-category="chatbot">
+        <h3>Accounting Assistant Chatbot</h3>
+        <p><strong>Executive Summary</strong></p>
+        <ul class="executive-list">
+          <li><strong>Problem:</strong> Users need faster, lower-friction access to accounting explanations and workflow guidance.</li>
+          <li><strong>Approach:</strong> Built a conversational accounting support interface mapped to common finance concepts and workflow questions.</li>
+          <li><strong>Outcome:</strong> Demonstrated practical integration of finance context, conversational AI, and application development.</li>
+          <li><strong>Skills:</strong> Chatbot design, application development, prompt engineering, and AI-enabled decision support.</li>
+        </ul>
+        <p class="strategic-outcome"><strong>Strategic Outcome:</strong> Showed how conversational AI can improve financial literacy and lightweight process support while preserving professional accounting judgment.</p>
+        <details class="project-detail">
+          <summary>Design assumptions and artifact</summary>
+          <p><strong>Key Assumptions &amp; Modeling Logic:</strong> The bot was designed around common accounting support questions and structured guidance rather than replacing professional accounting judgment.</p>
+          <div class="link-group">
+            <a href="assets/mybot.html" class="resume-btn" target="_blank">Open Chatbot Demo</a>
+            <a href="assets/mybot.html" class="resume-btn" download>Download Chatbot File</a>
+          </div>
+        </details>
+      </article>
+    </div>
+
+    <p class="confidentiality-note"><strong>Confidentiality &amp; Data Use:</strong> Professional examples are summarized at a high level and do not include client names, proprietary data, confidential workflows, or internal system details. Portfolio artifacts use public, synthetic, anonymized, or redacted data.</p>
   </section>
 
   <section id="financial-modeling">
@@ -160,7 +300,7 @@
   </section>
 
   <section id="projects">
-    <h2>Selected Technical &amp; Research Projects</h2>
+    <h2>Additional Graduate Work &amp; Technical Projects</h2>
       <div class="project">
       <h3><span class="featured-label">Featured</span>Enterprise AI Decision-Support System for Student Retention and Advisor Workflow Optimization</h3>
       <p><strong>Project Summary:</strong> Designed an AI-powered Student Success Early Warning System for a mid-size university to identify at-risk first- and second-year students earlier, improve advisor prioritization, and support retention. The proposed system integrates Student Information System, Learning Management System, and cafeteria POS data into advisor-facing dashboards, using machine learning risk scoring, explainable AI, MLOps, and governance controls to support timely, ethical, human-centered intervention.</p>
@@ -335,5 +475,6 @@
     <a href="assets/Resume-ML_AI -Chelsea Anestal.pdf" class="resume-btn" download>Download My Resume</a>
 
   </footer>
+  <script src="script.js" defer></script>
 </body>
 </html>
