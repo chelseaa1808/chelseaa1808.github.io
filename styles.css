@@ -170,6 +170,31 @@ a:hover {
   margin-bottom: 1rem;
 }
 
+.module-preview-card {
+  margin-top: 0.65rem;
+  border: 1px solid #dbeafe;
+  border-radius: 10px;
+  padding: 0.7rem;
+  background-color: #f8fbff;
+}
+
+.module-preview-title {
+  margin: 0 0 0.45rem;
+  color: #1e3a8a;
+  font-weight: 700;
+}
+
+.module-preview-note {
+  margin: 0.45rem 0 0.55rem;
+  color: #334155;
+  font-size: 0.9rem;
+}
+
+.module-chart {
+  width: 100%;
+  min-height: 230px;
+}
+
 .final-project {
   background-color: #f8fafc;
 }

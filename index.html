@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chelsea Anestal | MBA Student Portfolio</title>
+  <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -202,7 +203,12 @@
         <p><strong>Module:</strong> Mod 1 - Forecast Time Series</p>
         <p>Built forecasting models using historical data to identify trends, evaluate patterns, and support forward-looking business and financial decisions.</p>
         <p><strong>Key Skills:</strong> Time series analysis, forecasting, trend analysis, Excel/statistical modeling, business interpretation.</p>
-        <a href="assets/Mod 1_TGT_MBAStudent.xlsx" class="resume-btn" download>Download Module File</a>
+        <div class="module-preview-card">
+          <p class="module-preview-title">Interactive Module Preview</p>
+          <div id="module-chart-mod1" class="module-chart" aria-label="Forecasting trend preview"></div>
+          <p class="module-preview-note">Interactive view overlays observed revenue with model fit to show trend and seasonality behavior.</p>
+          <a href="assets/Mod 1_TGT_MBAStudent.xlsx" class="resume-btn" download>Download Module File</a>
+        </div>
       </article>
 
       <article class="finance-item">
@@ -210,7 +216,12 @@
         <p><strong>Module:</strong> Mod 2 - Analyzing Datasets</p>
         <p>Analyzed structured datasets to identify patterns, summarize key findings, and translate data into actionable business insights.</p>
         <p><strong>Key Skills:</strong> Data cleaning, exploratory data analysis, descriptive statistics, business analytics, visualization.</p>
-        <a href="assets/Mod 2-AnalyzingDataset.xlsx" class="resume-btn" download>Download Module File</a>
+        <div class="module-preview-card">
+          <p class="module-preview-title">Interactive Module Preview</p>
+          <div id="module-chart-mod2" class="module-chart" aria-label="Quarterly commission preview"></div>
+          <p class="module-preview-note">Interactive aggregation highlights commission patterns across quarters and asset classes.</p>
+          <a href="assets/Mod 2-AnalyzingDataset.xlsx" class="resume-btn" download>Download Module File</a>
+        </div>
       </article>
 
       <article class="finance-item">
@@ -218,7 +229,12 @@
         <p><strong>Module:</strong> Mod 3 - Capital Budgeting and Risk Analysis</p>
         <p>Evaluated investment decisions using capital budgeting methods and risk analysis to assess project feasibility and expected financial value.</p>
         <p><strong>Key Skills:</strong> NPV, IRR, payback period, sensitivity analysis, scenario analysis, risk-adjusted decision-making.</p>
-        <a href="assets/Mod 3_Capital Budget + Risk Analysis.xlsx" class="resume-btn" download>Download Module File</a>
+        <div class="module-preview-card">
+          <p class="module-preview-title">Interactive Module Preview</p>
+          <div id="module-chart-mod3" class="module-chart" aria-label="Scenario NPV preview"></div>
+          <p class="module-preview-note">Scenario-driven NPV comparison (base, optimistic, pessimistic) to support risk-adjusted project decisions.</p>
+          <a href="assets/Mod 3_Capital Budget + Risk Analysis.xlsx" class="resume-btn" download>Download Module File</a>
+        </div>
       </article>
 
       <article class="finance-item">
@@ -226,7 +242,12 @@
         <p><strong>Module:</strong> Mod 4 - Portfolio</p>
         <p>Developed a portfolio analysis model to evaluate investment performance, diversification, risk-return tradeoffs, and asset allocation strategies.</p>
         <p><strong>Key Skills:</strong> Expected return, volatility, covariance/correlation, diversification, efficient frontier, capital market line, portfolio optimization.</p>
-        <a href="assets/Mod 4 -Portfolio Management Sample C.Anestal.xlsx" class="resume-btn" download>Download Module File</a>
+        <div class="module-preview-card">
+          <p class="module-preview-title">Interactive Module Preview</p>
+          <div id="module-chart-mod4" class="module-chart" aria-label="ETF cumulative return preview"></div>
+          <p class="module-preview-note">Cumulative return paths visualize diversification and relative ETF performance over time.</p>
+          <a href="assets/Mod 4 -Portfolio Management Sample C.Anestal.xlsx" class="resume-btn" download>Download Module File</a>
+        </div>
       </article>
 
       <article class="finance-item">
@@ -234,7 +255,12 @@
         <p><strong>Module:</strong> Mod 5 - VBA</p>
         <p>Used VBA to automate financial modeling tasks, improve spreadsheet functionality, and streamline repeatable analytical workflows.</p>
         <p><strong>Key Skills:</strong> Excel VBA, automation, macros, spreadsheet modeling, process efficiency.</p>
-        <a href="assets/Mod 5_VBA.xlsm" class="resume-btn" download>Download Module File</a>
+        <div class="module-preview-card">
+          <p class="module-preview-title">Interactive Module Preview</p>
+          <div id="module-chart-mod5" class="module-chart" aria-label="VBA cash flow automation preview"></div>
+          <p class="module-preview-note">Automated payback logic preview using period cash flows and cumulative recovery trajectory.</p>
+          <a href="assets/Mod 5_VBA.xlsm" class="resume-btn" download>Download Module File</a>
+        </div>
       </article>
 
       <article class="finance-item">
@@ -242,7 +268,12 @@
         <p><strong>Module:</strong> Mod 6 - Options</p>
         <p>Analyzed options strategies, including protective puts, option moneyness, and delta, to evaluate downside protection and risk management opportunities.</p>
         <p><strong>Key Skills:</strong> Options analysis, protective puts, delta, moneyness, derivatives, downside risk management.</p>
-        <a href="assets/Mod 6-Options.xlsm" class="resume-btn" download>Download Module File</a>
+        <div class="module-preview-card">
+          <p class="module-preview-title">Interactive Module Preview</p>
+          <div id="module-chart-mod6" class="module-chart" aria-label="Options payoff preview"></div>
+          <p class="module-preview-note">Payoff profile comparison for stock, call, and put positions to evaluate downside protection dynamics.</p>
+          <a href="assets/Mod 6-Options.xlsm" class="resume-btn" download>Download Module File</a>
+        </div>
       </article>
     </div>
 
@@ -256,7 +287,12 @@
         <li>Evaluated options-based risk management strategies, including protective puts, moneyness, and delta sensitivity.</li>
         <li>Applied financial modeling techniques to support investment decision-making and communicate findings through structured analysis.</li>
       </ul>
-      <a href="assets/Final Project -C.Anestal_PortfolioManagementFinancialAnalysis.xlsm" class="resume-btn" download>Download Final Project File</a>
+      <div class="module-preview-card">
+        <p class="module-preview-title">Interactive Final Project Preview</p>
+        <div id="module-chart-final" class="module-chart" aria-label="Efficient frontier preview"></div>
+        <p class="module-preview-note">Efficient frontier preview illustrates expected return versus portfolio risk across allocation mixes.</p>
+        <a href="assets/Final Project -C.Anestal_PortfolioManagementFinancialAnalysis.xlsm" class="resume-btn" download>Download Final Project File</a>
+      </div>
     </article>
 
     <article class="finance-item final-project">
