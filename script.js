@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const detailSections = Array.from(
     document.querySelectorAll("#featured-projects .project-detail")
   );
+
   const previewModal = document.getElementById("artifact-preview-modal");
   const previewBody = document.getElementById("artifact-preview-body");
   const previewTitle = document.getElementById("artifact-preview-title");
@@ -308,9 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   async function renderModulePreviews() {
-    if (!document.getElementById("module-chart-mod1")) {
-      return;
-    }
+    if (!document.getElementById("module-chart-mod1")) return;
 
     if (typeof Plotly === "undefined") {
       [
@@ -329,7 +328,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const response = await fetch("assets/module-preview-data.json");
       data = await response.json();
-    } catch (error) {
+    } catch (_error) {
       [
         "module-chart-mod1",
         "module-chart-mod2",
@@ -426,7 +425,11 @@ document.addEventListener("DOMContentLoaded", () => {
             "%{text}<br>Std Dev: %{x:.2%}<br>Expected Return: %{y:.2%}<extra></extra>"
         }
       ],
-      { ...baseLayout, xaxis: { title: "Portfolio Risk (Std Dev)", tickformat: ",.0%" }, yaxis: { title: "Expected Return", tickformat: ",.0%" } },
+      {
+        ...baseLayout,
+        xaxis: { title: "Portfolio Risk (Std Dev)", tickformat: ",.0%" },
+        yaxis: { title: "Expected Return", tickformat: ",.0%" }
+      },
       config
     );
   }
