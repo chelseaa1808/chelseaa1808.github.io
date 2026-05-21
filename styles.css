@@ -475,6 +475,27 @@ a:hover {
   white-space: pre-wrap;
 }
 
+.embedded-preview-card {
+  border: 1px solid #dbeafe;
+  border-radius: 10px;
+  background: #f8fbff;
+  padding: 0.7rem;
+  margin-top: 0.55rem;
+}
+
+.embedded-preview-card p {
+  margin: 0 0 0.45rem;
+  color: #1e3a8a;
+}
+
+.embedded-live-frame {
+  width: 100%;
+  min-height: 520px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+}
+
 @media (max-width: 700px) {
   body {
     padding: 1.05rem 0.65rem 1.7rem;
@@ -501,5 +522,9 @@ a:hover {
 
   .preview-grid {
     grid-template-columns: 1fr;
+  }
+
+  .embedded-live-frame {
+    min-height: 420px;
   }
 }
