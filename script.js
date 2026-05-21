@@ -276,7 +276,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function initDownloadPreviewButtons() {
-    const downloadLinks = Array.from(document.querySelectorAll("a[download]"));
+    const downloadLinks = Array.from(
+      document.querySelectorAll("a[download][data-preview='true']")
+    );
     downloadLinks.forEach((link) => {
       if (link.dataset.previewAttached === "true") return;
       if (!link.getAttribute("href")) return;
